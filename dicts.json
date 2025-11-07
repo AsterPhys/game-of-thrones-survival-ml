@@ -1,0 +1,122 @@
+{
+  "cultures_grouped": {
+    "Old Nations": ["valyrian", "first men", "andal", "andals", "rhoynar"],
+    "the North": ["northmen", "northern mountain clans", "crannogmen"],
+    "the Iron Islands": ["ironborn", "ironborn", "ironmen"],
+    "the Mountain and the Vale": ["valemen", "vale", "vale mountain clans", "sistermen"],
+    "the Isles and Rivers": ["riverlands", "rivermen"],
+    "the Rock": ["westerman", "westermen", "westerlands"],
+    "the Stormlands": ["stormlander", "stormlands"],
+    "the Reach": ["reach", "reachmen", "the reach"],
+    "Dorne": ["dornish", "dornishmen", "dorne"],
+    "Essos Nations": ["astapor", "astapori", "braavosi", "braavos", "tyroshi", "lysene", "lyseni", "myrish", "pentoshi", "qartheen", "qarth", "dothraki", "lhazarene", "lhazareen", "meereen", "meereenese", "norvoshi", "qohor", "summer isles", "summer islands", "summer islander", "asshai", "asshai'i", "norvos", "ghiscari", "ghiscaricari"],
+    "Other Nations": ["ibbenese", "westeros", "free folk", "wildling", "wildlings", "naathi"]
+  },
+  "cultures_grouped_by_continent": {
+    "Westeros": ["first men", "andal", "andals", "northmen", "northern mountain clans", "crannogmen", "valemen", "vale", "vale mountain clans", "riverlands", "rivermen", "westerman", "westermen", "westerlands", "stormlander", "stormlands", "reach", "reachmen", "the reach", "dornish", "dornishmen", "dorne", "ironborn", "ironmen", "westeros", "free folk", "wildling", "wildlings"],
+    "Essos": ["valyrian", "rhoynar", "astapor", "astapori", "braavosi", "braavos", "tyroshi", "lysene", "lyseni", "myrish", "pentoshi", "qartheen", "qarth", "dothraki", "lhazarene", "lhazareen", "meereen", "meereenese", "norvoshi", "qohor", "asshai", "asshai'i", "norvos", "ghiscari", "ghiscaricari", "naathi", "ibbenese", "summer isles", "summer islands", "summer islander"],
+    "Other / Sea Peoples": ["ironborn", "ironmen", "ibbenese", "naathi"]
+  },
+  "cultures_grouped_by_societal_type": {
+    "City-States & Merchant Cities": ["braavosi", "braavos", "pentoshi", "tyroshi", "qarth", "astapor", "astapori", "myrish", "lysene", "lyseni"],
+    "Tribal / Steppe": ["dothraki", "lhazarene", "lhazareen"],
+    "Ancient Lineages": ["first men", "andal", "andals", "valyrian", "rhoynar"],
+    "Islanders & Seafarers": ["ironborn", "ironmen", "summer isles", "summer islands", "summer islander", "ibbenese"],
+    "Free / Border Peoples": ["free folk", "wildling", "wildlings", "naathi"]
+  },
+  "titles_grouped_by_rank": {
+    "Royalty": ["king", "queen", "prince", "princess", "king in the north", "king of astapor", "king of the andals", "king of the iron islands", "king of winter", "king-beyond-the-wall"],
+    "Great Lords / Paramounts": ["lord paramount of the mander", "lord paramount of the stormlands", "lord paramount of the trident", "lord of the seven kingdoms", "lord reaper of pyke", "lord of harrenhal"],
+    "Lords and Ladies (regional)": ["lord", "lady", "lord of dragonstone", "lady of the vale", "lord of the crossing", "lady of bear island", "lord of the iron islands", "lady of darry", "lord of kingsgrave"],
+    "Lesser Nobility / Worthy": ["barrowton", "cerwyn", "harlaw", "hightower", "hornvale", "oakenshield"],
+    "Knights and Martial": ["knight", "ser", "first sword of braavos", "knight of griffin's roost", "master-at-arms", "lord captain of the iron fleet", "lord commander of the night's watch"],
+    "Court & Officers": ["hand of the king", "master of coin", "master of ships", "master of whisperers", "steward", "lord steward", "seneschal"],
+    "Military Commands": ["captain", "captain-general", "commander of the city watch", "commander of the second sons", "oarmaster", "lord captain"],
+    "Religious": ["high septon", "septa", "septon", "red priest", "warlock", "slave of r'hllor"],
+    "Scholars & Advisors": ["maester", "grand maester", "magister", "magister of pentos"],
+    "Household & Service": ["cupbearer", "goodman", "goodwife", "keeper of the gates of the moon", "castellan"],
+    "Place-names as titles": ["winterfell", "dragonstone", "harrenhal", "riverrun", "the crossing", "three towers", "three sisters", "ten towers", "twins"]
+  },
+  "titles_grouped_by_function": {
+    "Sovereign / Dynastic": ["king", "queen", "prince", "princess", "protector of the realm", "prince of dorne", "prince of dragonstone", "prince of the narrow sea"],
+    "Regional Governance": ["lord of ... (регион)", "lady of ... (регион)", "lord paramount ...", "seneschal", "steward", "lord steward"],
+    "Military & Defense": ["captain", "captain-general", "commander of the city watch", "commander of the second sons", "lord captain of the iron fleet", "lord reaper of pyke", "first ranger"],
+    "Administration & Court Offices": ["master of coin", "master of ships", "master of whisperers", "master-at-arms", "castellan", "seneschal", "steward", "cupbearer"],
+    "Religious & Mystic": ["high septon", "septa", "septon", "red priest", "warlock", "slave of r'hllor"],
+    "Advisors & Learned": ["maester", "grand maester", "magister", "magister of pentos", "good master", "wisdom"],
+    "Honorific / Knightly": ["ser", "knight", "first sword of braavos", "knight of griffin's roost"],
+    "Household / Local Titles": ["goodman", "goodwife", "mistress of whisperers", "undergaoler", "chief undergaoler"],
+    "Location / Seat names": ["castle lychester", "casterly rock", "dragonstone", "winterfell", "harrenhal", "riverrun"]
+  },
+  "titles_normalized": {
+    "king_family": ["king", "king in the north", "king of astapor", "king of the andals", "king of the iron islands", "king of winter", "king-beyond-the-wall"],
+    "queen_family": ["queen", "queendowager queen", "queenblack bride", "princessqueen", "princessqueendowager queen"],
+    "prince_princess_family": ["prince", "prince of dorne", "prince of dragonstone", "princess", "princesssepta"],
+    "lord_of_X": ["lord of atranta", "lord of blackhaven", "lord of coldmoat", "lord of darry", "lord of dragonstone", "lord of greyshield", "lord of hammerhorn", "lord of harrenhal", "lord of hellholt", "lord of honeyholt", "lord of iron holt", "lord of kingsgrave", "lord of oakenshield", "lord of oldcastle", "lord of pebbleton", "lord of southshield", "lord of starfall", "lord of sunflower hall", "lord of the crossing", "lord of the deep den", "lord of the hornwood", "lord of the iron islands", "lord of the marches", "lord of the red dunes", "lord of the seven kingdoms", "lord of the snakewood", "lord of the ten towers", "lord of the tides", "lord of the tor", "lord of white harbor"],
+    "lady_of_X": ["lady of bear island", "lady of darry", "lady of the leaves", "lady of the vale", "lady of torrhen's square"],
+    "lord_paramount": ["lord paramount of the mander", "lord paramount of the stormlands", "lord paramount of the trident"],
+    "military_commanders": ["captain", "captain of the guard", "captain-general", "commander of the city watch", "commander of the second sons", "lord captain of the iron fleet", "lord commander of the night's watch", "lord reaper of pyke"],
+    "court_offices": ["hand of the king", "master of coin", "master of ships", "master of whisperers", "master-at-arms", "steward", "seneschal", "castellan"],
+    "religious": ["high septon", "septa", "septon", "red priest", "warlock", "slave of r'hllor"],
+    "learned": ["maester", "grand maester", "magister", "magister of pentos"],
+    "knightly": ["ser", "knight", "first sword of braavos", "knight of griffin's roost"],
+    "place_only": ["winterfell", "dragonstone", "harrenhal", "casterly rock", "riverrun", "three towers", "three sisters", "ten towers", "twins"]
+  },
+  "cultures_variant_region_fine": {
+    "North": ["northmen", "northern mountain clans", "crannogmen", "free folk", "wildling", "wildlings"],
+    "Vale": ["valemen", "vale", "vale mountain clans", "sistermen"],
+    "Riverlands": ["riverlands", "rivermen"],
+    "Westerlands": ["westerman", "westermen", "westerlands"],
+    "Iron Islands": ["ironborn", "ironmen"],
+    "Stormlands": ["stormlander", "stormlands"],
+    "The Reach": ["reach", "reachmen", "the reach"],
+    "Dorne": ["dornish", "dornishmen", "dorne"],
+    "Essos — Free Cities & Merchants": ["braavosi", "braavos", "pentoshi", "tyroshi", "myrish", "qarth", "qartheen", "lysene", "lyseni"],
+    "Essos — Slaver Cities & Eastern": ["astapor", "astapori", "meereen", "meereenese", "ghiscari", "ghiscaricari", "asshai", "asshai'i"],
+    "Misc / Islanders & Others": ["summer isles", "summer islands", "summer islander", "ibbenese", "naathi", "westeros"]
+  },
+  "cultures_variant_by_society": {
+    "Feudal / Noble Lineages": ["first men", "andal", "andals", "valemen", "northmen", "westerman", "reach", "dornish"],
+    "City-States & Merchant Cultures": ["braavosi", "braavos", "pentoshi", "tyroshi", "qarth", "myrish", "qartheen"],
+    "Nomadic / Steppe": ["dothraki", "lhazarene", "lhazareen"],
+    "Islanders / Seafarers": ["ironborn", "ironmen", "ibbenese", "summer isles", "summer islands", "summer islander"],
+    "Ancient / Exotic (Valyrian, Rhoynar, Asshai)":["valyrian", "rhoynar", "asshai", "asshai'i"],
+    "Border / Fringe Peoples": ["free folk", "wildling", "wildlings", "naathi"]
+  },
+  "cultures_variant_binary_continent_plus_type": {
+    "Westeros_core": ["first men", "andal", "andals", "northmen", "northern mountain clans", "crannogmen", "valemen", "vale", "riverlands", "westerman", "westerlands", "stormlands", "reach", "dornish", "ironborn", "ironmen"],
+    "Essos_core": ["valyrian", "rhoynar", "braavosi", "braavos", "pentoshi", "tyroshi", "qarth", "astapor", "meereen", "asshai", "myrish", "ghiscari"],
+    "Maritime / Islanders": ["ibbenese", "summer isles", "summer islands", "summer islander", "naathi"]
+  },
+
+  "titles_variant_functional_strict": {
+    "Monarchy": ["king", "queen", "king in the north", "king-beyond-the-wall", "king of astapor", "king of the andals", "king of the iron islands", "king of winter"],
+    "Paramount & Great Lords": ["lord paramount of the mander", "lord paramount of the stormlands", "lord paramount of the trident", "lord of the seven kingdoms"],
+    "Regional Lords / Ladies": ["lord", "lady", "lord of dragonstone", "lady of the vale", "lady of bear island", "lady of darry", "lord of harrenhal"],
+    "Military / Command": ["captain", "captain-general", "commander of the city watch", "commander of the second sons", "lord captain of the iron fleet", "lord commander of the night's watch", "first ranger"],
+    "Court & Administration": ["hand of the king", "master of coin", "master of ships", "master of whisperers", "steward", "seneschal", "castellan"],
+    "Religious / Mystic": ["high septon", "septa", "septon", "red priest", "warlock", "slave of r'hllor"],
+    "Scholars & Advisors": ["maester", "grand maester", "magister", "magister of pentos"],
+    "Local / Household": ["cupbearer", "goodman", "goodwife", "keeper of the gates of the moon", "undergaoler", "chief undergaoler"],
+    "Place-only / Seat": ["winterfell", "dragonstone", "harrenhal", "riverrun", "casterly rock"]
+  },
+  "titles_variant_level_based": {
+    "Sovereign": ["king", "queen", "protector of the realm", "king-beyond-the-wall"],
+    "High Nobility": ["lord paramount of the mander", "lord paramount of the stormlands", "lord reaper of pyke", "lord of the seven kingdoms"],
+    "Landed Gentry": ["lord", "lady", "lord of ...", "lady of ...", "lady of the vale", "lord of dragonstone"],
+    "Knightly & Martial": ["ser", "knight", "first sword of braavos", "knight of griffin's roost", "master-at-arms"],
+    "Administrative Officers": ["master of coin", "master of ships", "master of whisperers", "steward", "seneschal", "castellan"],
+    "Religious / Cult": ["high septon", "septa", "septon", "red priest", "warlock"],
+    "Household Staff / Minor Officials": ["cupbearer", "goodman", "goodwife", "keeper of the gates of the moon", "undergaoler"],
+    "Toponym / Seat": ["the crossing", "ten towers", "three sisters", "twins", "longtable"]
+  },
+  "titles_variant_binary_flags_for_ml": {
+    "is_royal": ["king", "queen", "prince", "princess", "king in the north", "protector of the realm"],
+    "is_paramount_or_lord": ["lord", "lord paramount of the mander", "lord paramount of the stormlands", "lord of the seven kingdoms", "lord of harrenhal"],
+    "is_military": ["captain", "captain-general", "commander of the city watch", "oarmaster", "lord reaper of pyke"],
+    "is_court_office": ["hand of the king", "master of coin", "master of ships", "master of whisperers", "master-at-arms", "steward"],
+    "is_religious": ["high septon", "septa", "septon", "red priest", "warlock"],
+    "is_scholar": ["maester", "grand maester", "magister"],
+    "is_place_only": ["winterfell", "dragonstone", "harrenhal", "casterly rock", "riverrun"]
+  }
+}
