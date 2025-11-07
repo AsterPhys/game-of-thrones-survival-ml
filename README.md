@@ -6,92 +6,99 @@
 
 ## Repository structure
 
-- **README.md**  
-  Project README (this file).
-
-- **notebook.ipynb**  
-  Jupyter notebook with the full pipeline:
-  - EDA
-  - preprocessing / feature engineering
-  - model selection / training
-  - evaluation
-  - submission generation
-
-- **requirements.txt**  
-  Python packages used to run the notebook.
-
-- **dicts.json**  
-  Contains alternative groupings/mappings for `culture` and `title` features used in experiments.
-
-- **submission.csv**  
-  Final predictions for the test set. Measured accuracy on the test set: **0.7557840616966581**.
+<div style="border:1px solid #ddd; padding:12px; border-radius:6px; background:#f8f8f8;">
+<pre>
+README.md
+notebook.ipynb
+requirements.txt
+dicts.json         # grouping variants for 'culture' and 'title'
+submission.csv     # predictions for the test set (accuracy: 0.7557840616966581)
+</pre>
+</div>
 
 ---
 
 ## What this project does
 
-This is a binary classification project that answers the question: **Will a Game of Thrones character survive?**
+This repository contains a runnable Jupyter notebook that implements a complete supervised learning pipeline for predicting whether a *Game of Thrones* character is alive in the final book. The notebook performs:
 
-**Main steps performed in the notebook:**
+- Data loading and cleaning (handling missing values and inconsistent date formats).
+- Exploratory data analysis (visual summaries, missing-value analysis, class balance checks).
+- Flexible, reproducible feature engineering driven by `load_config(...)`:
+  - parse and standardize `dateOfBirth` / `age` (creates `age_value`, `age_no_data`, `dateOfBirth_value`);
+  - create boolean flags for family relations and presence in books (`book1`..`book5`);
+  - compute relational counts (e.g., number of dead relatives) and presence flags (`is_married`, `is_spouse_alive`, `is_heir_alive`, `is_father_alive`, `is_mother_alive`);
+  - use precomputed **popularity** / link-count as a proxy for character prominence.
+- Categorical grouping via `dicts.json` (title / culture mapping variants are injected into the pipeline).
+- Encoding options (one-hot or target encoding) and configurable pipelines for preprocessing.
+- Model selection and hyperparameter tuning (see section below).
+- Final training on chosen configuration and creation of `submission.csv`.
 
-- Exploratory Data Analysis (visuals, missing value analysis, class balance)  
-- Feature engineering (title/culture grouping, relational features, date parsing, boolean flags)  
-- Model selection and hyperparameter search (compare several classifiers, use randomized search where applicable)  
-- Train best model on training data and evaluate on validation/test sets using accuracy  
-- Produce `submission.csv` with predictions for the test dataset
-
-**Goal / target metric:** achieve **accuracy > 0.75** on the test dataset.
-
----
-
-## Data description
-
-Each row corresponds to a character.
-
-### Columns (short description)
-
-| Column | Description |
-|---|---|
-| `name` | Character name |
-| `Title` | Social rank / title of the character (e.g. "Lord", "Queen") |
-| `House` | Noble house to which the character belongs |
-| `Culture` | Cultural/social group of the character |
-| `book1`, `book2`, `book3`, `book4`, `book5` | Indicators (presence) of the character in the respective books |
-| `Is noble` | Boolean flag indicating nobility derived from `Title` |
-| `Age` | Age relative to reference (305 AC) |
-| `male` | Boolean (male / female) |
-| `dateOfBirth` | Date of birth (as available) |
-| `Spouse` | Name of the spouse (if any) |
-| `Father` | Name of the father (if any) |
-| `Mother` | Name of the mother (if any) |
-| `Heir` | Name of the heir (if any) |
-| `Is married` | Whether the character is married (boolean) |
-| `Is spouse alive` | Whether the character's spouse is alive (boolean) |
-| `Is mother alive` | Whether the character's mother is alive (boolean) |
-| `Is heir alive` | Whether the character's heir is alive (boolean) |
-| `Is father alive` | Whether the character's father is alive (boolean) |
-| `Number dead relations` | Number of dead relatives (relations that have died) |
-| `Popularity score` | Count of internal incoming + outgoing links to the character page on *A Wiki of Ice and Fire* — used as a proxy for character prominence |
-| `isAlive` | **Target variable** — whether the character is alive in the (final) book (binary label used for supervised learning) |
+The notebook is organized to be configurable (via `load_config`) and reproducible: train / validation split is stratified, experiments are recorded in a results table, and best estimators are saved.
 
 ---
 
-## Feature engineering highlights
+## Feature engineering highlights (accurate)
 
-- **Title / Culture grouping:** use `dicts.json` to map many sparse categorical values into broader categories. Multiple mapping variants are tested as part of experiments.  
-- **Relational features:** flags and counts derived from family/spouse/heir/father/mother columns (e.g., number of dead relatives, whether heir is alive).  
-- **Date parsing:** parse `dateOfBirth` to derive age where possible and standardize missing/approximate dates.  
-- **Boolean flags:** `Is noble`, `Is married`, `male`, presence indicators for books, etc.  
-- **Popularity:** use internal link counts as a proxy for character prominence.
+Key feature-engineering steps implemented in the notebook:
+
+- **Age / date processing**
+  - `age_value` — numeric age (filled with 0 where missing);
+  - `dateOfBirth_value` — normalized date value placeholder;
+  - `age_no_data` — binary flag indicating missing age/date information.
+- **Title & Culture grouping**
+  - Titles and cultures are mapped using variant dictionaries loaded from `dicts.json` (see Notes below).
+  - Grouping variants are pluggable through `load_config(...)`.
+- **Relational & family features**
+  - Flags for `Is married`, `Is spouse alive`, `Is mother alive`, `Is father alive`, `Is heir alive`.
+  - `Number dead relations` — aggregated count of dead relatives.
+- **Book-presence indicators**
+  - `book1` .. `book5` retained as presence indicators (useful signals for survival likelihood).
+- **Popularity**
+  - Precomputed link-count (incoming + outgoing internal wiki links) used as `Popularity score` feature.
+- **Preprocessing pipeline**
+  - The notebook contains helper `pipeline_transform(...)` and optional pipelines applied before model training. Numeric scaling (e.g., `StandardScaler`) and encoding (one-hot / target) are available and used where appropriate.
 
 ---
 
-## Model selection & training
+## Model selection & training (accurate)
 
-- Compare several classifiers (e.g., logistic regression, tree-based models, ensemble methods).  
-- Use randomized search (or similar) for hyperparameter tuning where applicable.  
-- Evaluate models on validation/test splits using **accuracy**; track experiments to select best model.  
-- Train chosen model on training data and produce final predictions for the test set.
+Model selection and tuning approach actually implemented in the notebook:
+
+- A function `train_models_randomsearch(...)` performs:
+  - stratified `train_test_split` (test_size=0.2),
+  - optional application of a preprocessing pipeline wrapping the estimator,
+  - `RandomizedSearchCV` over provided parameter distributions (`n_iter` configurable),
+  - evaluation on the hold-out validation split using **accuracy**.
+- Models compared in the experiments include (but are not limited to):
+  - `LogisticRegression`, `RandomForestClassifier`, `DecisionTreeClassifier`, `AdaBoostClassifier`,
+  - `GaussianProcessClassifier`, `GaussianNB`, `KNeighborsClassifier`, `SVC`.
+- Results from each run are collected into a DataFrame with model name, best parameters and validation accuracy; best estimator objects are kept for later use.
+- The notebook trains the selected best model and produces `submission.csv` with test-set predictions. The reported test accuracy is **0.7557840616966581**.
+
+---
+
+## Notes about `dicts.json` (explicit variants)
+
+`dicts.json` in this project holds a set of predefined grouping dictionaries used by the notebook. The notebook accepts which mapping to use via `load_config(..., cultures_grouped=..., titles_grouped=...)`.
+
+**Culture grouping variants present in the project:**
+- `cultures_grouped`
+- `cultures_grouped_by_continent`
+- `cultures_grouped_by_societal_type`
+- `cultures_variant_region_fine`
+- `cultures_variant_by_society`
+- `cultures_variant_binary_continent_plus_type`
+
+**Title grouping / normalization variants present in the project:**
+- `titles_grouped_by_rank`
+- `titles_grouped_by_function`
+- `titles_normalized`
+- `titles_variant_functional_strict`
+- `titles_variant_level_based`
+- `titles_variant_binary_flags_for_ml`
+
+Switching between these mapping variants is part of the feature-engineering experiments: different mappings can materially affect model input dimensionality and downstream performance.
 
 ---
 
@@ -119,30 +126,10 @@ jupyter lab   # or `jupyter notebook`
 
 ---
 
-## Notes about `dicts.json`
-
-`dicts.json` contains predefined grouping dictionaries used by the notebook for:
-
-- mapping different `culture` values into broader groups, and  
-- mapping various `title` strings into canonical title categories.
-
-Switching between mapping variants (there can be multiple grouping strategies in the file) is part of the feature-engineering experiments and may materially affect model performance.
-
----
-
 ## Results
 
 - **Final submission file:** `submission.csv`  
 - **Test accuracy achieved:** **0.7557840616966581**
-
----
-
-## Files of interest
-
-- `notebook.ipynb` — full, runnable pipeline (recommended starting point)  
-- `requirements.txt` — environment reproducibility  
-- `dicts.json` — grouping variants used during feature engineering  
-- `submission.csv` — final model predictions (accuracy reported above)
 
 ---
 
