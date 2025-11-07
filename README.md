@@ -11,8 +11,10 @@
 README.md
 notebook.ipynb
 requirements.txt
-dicts.json         # grouping variants for 'culture' and 'title'
-submission.csv     # predictions for the test set (accuracy: 0.7557840616966581)
+dicts.json
+submission.csv     # predictions for the test set
+df_final.csv
+new_df_final.csv
 </pre>
 </div>
 
@@ -31,6 +33,8 @@ This repository contains a runnable Jupyter notebook that implements a complete 
 - Final training on chosen configuration and creation of `submission.csv`.
 
 The notebook is organized to be configurable (via `load_config`) and reproducible: train / validation split is stratified, experiments are recorded in a results table, and best estimators are saved.
+
+**Goal / target metric:** achieve accuracy > 0.75 on the test dataset.
 
 ---
 
